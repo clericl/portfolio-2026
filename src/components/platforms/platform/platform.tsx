@@ -2,7 +2,7 @@ import type { ReactNode } from "react"
 import { Floor } from "./floor";
 
 type PlatformProps = {
-  children: ReactNode;
+  children?: ReactNode;
   neon?: boolean;
 }
 

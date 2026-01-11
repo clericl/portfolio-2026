@@ -1,17 +1,16 @@
+import type { ThreeElements } from "@react-three/fiber";
 import { useIridescentMaterial } from "../../../../hooks/use-iridescent-material/index.ts";
-import { STAIR_HEIGHT } from "../../../../utils/constants.ts";
+import { STAIR_HEIGHT } from "../../../../utils";
 
 type StepProps = {
   hasSphere: boolean;
-  positionY: number;
-  rotationY: number;
-}
+} & ThreeElements['group'];
 
-export function Step({ hasSphere, rotationY, positionY }: StepProps) {
+export function Step({ hasSphere, ...otherProps }: StepProps) {
   const material = useIridescentMaterial('#a0c6db')
 
   return (
-    <group position-y={positionY} rotation-y={rotationY}>
+    <group {...otherProps}>
       <mesh
         position-x={12}
         rotation-x={Math.PI / 2}

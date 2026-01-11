@@ -1,9 +1,8 @@
 import { useSpring, animated, config } from "@react-spring/three";
-import { PLATFORM_HEIGHT_BASE, STAIRCASE_HEIGHT } from "../../utils/constants";
+import { HALF_ROTATION_HEIGHT, PLATFORMS, STAIRCASE_HEIGHT } from "../../utils";
 import { useCallback, useEffect } from "react";
 import { Stairs } from "./stairs";
 import { Platforms } from "../platforms";
-import { PLATFORMS } from "./constants";
 import { useLocation } from "../../hooks";
 
 export function Staircase() {
@@ -21,7 +20,7 @@ export function Staircase() {
 
     if (typeof platformIndex === "number") {
       api.start({
-        positionY: PLATFORM_HEIGHT_BASE * platformIndex,
+        positionY: HALF_ROTATION_HEIGHT * platformIndex,
         rotationY: Math.PI * platformIndex,
         config: config.molasses,
       });
@@ -38,7 +37,7 @@ export function Staircase() {
       rotation-y={springs.rotationY}
     >
       <group position={[0, -(STAIRCASE_HEIGHT + 5), 0]}>
-        <Stairs position={[0, 0, 0]} />
+        <Stairs />
         <Platforms platforms={PLATFORMS} />
       </group>
     </animated.group>

@@ -9,7 +9,7 @@ export function Effects() {
 
   useFrame(({ clock }) => {
     if (bloomRef.current) {
-      bloomRef.current.intensity = (Math.sin(clock.elapsedTime * 2) + 1.5) / 4;
+      bloomRef.current.intensity = Math.sin(clock.elapsedTime * 2) / 8;
     }
   });
 

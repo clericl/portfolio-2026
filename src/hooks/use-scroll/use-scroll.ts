@@ -1,10 +1,13 @@
-import { useCallback, useEffect, useRef, type RefCallback } from "react"
+import { useCallback, useContext, useEffect, useRef, type RefCallback } from "react"
 import { useSwipeable } from "react-swipeable"
-import { PLATFORMS } from "../../components/staircase"
+import { ModalContext } from "../../components/modal/utils"
+import { PLATFORMS } from "../../utils"
 
 const TIMEOUT = 250
 
 export function useScroll() {
+  const { modal } = useContext(ModalContext)
+
   const timerRef = useRef<number | undefined>(null)
 
   const handlePrev = useCallback(() => {
@@ -28,7 +31,7 @@ export function useScroll() {
   }, [])
 
   const handleWheel = useCallback((e: WheelEvent) => {
-    if (Math.abs(e.deltaY) >= 50) {
+    if (!modal && Math.abs(e.deltaY) >= 50) {
       if (!timerRef.current) {
         if (e.deltaY > 0) {
           handleNext()
@@ -45,7 +48,7 @@ export function useScroll() {
         timerRef.current = null
       }, TIMEOUT)
     }
-  }, [handleNext, handlePrev])
+  }, [handleNext, handlePrev, modal])
 
   const { ref } = useSwipeable({
     onSwipedDown: handlePrev,

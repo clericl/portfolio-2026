@@ -1,32 +1,31 @@
-import { type Vector3 } from "@react-three/fiber";
 import {
-  NUMBER_OF_ROTATIONS,
-  STAIRS_PER_ROTATION,
+  NUMBER_OF_HALF_ROTATIONS,
+  STAIRS_PER_HALF_ROTATION,
   SPACE_BETWEEN_STAIRS,
-} from "../../../utils/constants.ts";
+} from "../../../utils";
 import { Step } from "./step";
 import { useMemo } from "react";
+import type { ThreeElements } from "@react-three/fiber";
 
-type StairsProps = {
-  position?: Vector3;
-}
-
-export function Stairs({ position = [0, 0, 0] }: StairsProps) {
+export function Stairs(props: ThreeElements['group']) {
   const stairs = useMemo(() => {
     const renderedSteps = []
 
-    const count = STAIRS_PER_ROTATION * NUMBER_OF_ROTATIONS;
+    const count = STAIRS_PER_HALF_ROTATION * NUMBER_OF_HALF_ROTATIONS;
 
     for (let i = 0; i < count; i++) {
       const positionY = i * SPACE_BETWEEN_STAIRS;
-      const rotationY = i * ((2 * Math.PI) / STAIRS_PER_ROTATION);
+
+      const TOTAL_ROTATION = NUMBER_OF_HALF_ROTATIONS * -Math.PI
+      const rotationY = TOTAL_ROTATION * (1 - (i / count))
 
       renderedSteps.push(
         <Step
           key={i}
-          hasSphere={i % (STAIRS_PER_ROTATION / 2) > STAIRS_PER_ROTATION / 4}
-          positionY={positionY}
-          rotationY={rotationY}
+          hasSphere={i % (STAIRS_PER_HALF_ROTATION) > (STAIRS_PER_HALF_ROTATION / 2)}
+          position-y={positionY}
+          rotation-y={rotationY}
+          visible={i % STAIRS_PER_HALF_ROTATION !== 0}
         />,
       );
     }
@@ -35,6 +34,6 @@ export function Stairs({ position = [0, 0, 0] }: StairsProps) {
   }, [])
 
   return (
-    <group position={position}>{stairs}</group>
+    <group {...props}>{stairs}</group>
   );
 }

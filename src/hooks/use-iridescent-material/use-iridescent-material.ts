@@ -24,7 +24,7 @@ export function useIridescentMaterial(color: ColorRepresentation) {
     }
     
     return newMaterial
-  }, [iridescenceOrm, iridescenceThickness])
+  }, [color, iridescenceOrm, iridescenceThickness])
 
   return mat
 }

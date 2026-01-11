@@ -1,2 +1,6 @@
 export { Platforms } from './platforms'
 export { Platform } from './platform'
+export { HomePlatform } from './home-platform'
+export { AboutPlatform } from './about-platform'
+export { WorkPlatform } from './work-platform'
+export { ContactPlatform } from './contact-platform'
