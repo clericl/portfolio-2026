@@ -6,6 +6,7 @@ import rosewrapped from '../../assets/work/rosewrapped.mp4'
 import miamimastercard from '../../assets/work/miamimastercard.mp4'
 import arbor from '../../assets/work/arbor.mp4'
 import treeline from '../../assets/work/treeline.mp4'
+import skylight from '../../assets/work/skylight.mp4'
 
 import email from '../../assets/icons/email.png'
 import github from '../../assets/icons/github.png'
@@ -353,6 +354,7 @@ export const getModals = (setModal: ModalContextProps['setModal']) => ({
   },
   skylight: {
     title: "Skylight",
+    video: skylight,
     text: [
       <div key={1} className="body">
         <p className="modal-text">
