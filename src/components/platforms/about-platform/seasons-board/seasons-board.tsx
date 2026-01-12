@@ -121,16 +121,16 @@ export function SeasonsBoard({ open }: SeasonsBoardProps) {
       </group>
       <animated.group scale={props.scale}>
         <group ref={springRef}>
-          <Spring count={200} radius={25} />
+          <Spring count={120} radius={25} />
         </group>
         <group ref={summerRef} visible={false}>
-          <Summer count={200} radius={25} />
+          <Summer count={120} radius={25} />
         </group>
         <group ref={autumnRef} visible={false}>
-          <Autumn count={200} radius={25} />
+          <Autumn count={120} radius={25} />
         </group>
         <group ref={winterRef} visible={false}>
-          <Winter count={200} radius={25} />
+          <Winter count={120} radius={25} />
         </group>
       </animated.group>
     </group>

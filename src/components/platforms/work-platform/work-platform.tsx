@@ -18,7 +18,7 @@ export function WorkPlatform() {
           <meshStandardMaterial
             metalness={1}
             roughness={0}
-            color={0x4b5272}
+            color={0x7b8199}
           />
         </Text3D>
       </Center>
