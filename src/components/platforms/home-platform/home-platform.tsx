@@ -3,6 +3,7 @@ import { Platform } from "..";
 import { useIridescentMaterial } from "../../../hooks";
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import { IconBubbles } from "./icon-bubbles";
 import type { Mesh } from "three";
 
 import hubballiUrl from '../../../assets/hubballi.json'
@@ -52,6 +53,7 @@ export function HomePlatform() {
           WEB DEVELOPER
         </Text3D>
       </Center>
+      <IconBubbles scale={0.5} position-z={-1} />
     </Platform>
   )
 }

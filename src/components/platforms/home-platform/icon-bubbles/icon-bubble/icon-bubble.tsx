@@ -1,15 +1,15 @@
 import { animated, config, useSpring } from "@react-spring/three";
-import { MeshTransmissionMaterial, useTexture } from "@react-three/drei";
+import { useTexture } from "@react-three/drei";
 import { useFrame, type ThreeElements } from "@react-three/fiber";
 import { useCallback, useRef } from "react";
 import { Color, DoubleSide, type Group, type Mesh } from "three";
 import { ICON_CIRCLE_RADIUS } from "../../../../../utils";
+import { useIridescentMaterial } from "../../../../../hooks";
 
-const BLACK = new Color("black");
-const BASE_COLOR = new Color("#b9afd4");
+const BASE_COLOR = new Color("#a0c6db");
 const BASE_EMISSIVE = new Color(0, 0, 0)
-const TARGET_COLOR = new Color('white')
-const TARGET_EMISSIVE = new Color(0.25, 0.25, 0.25)
+const TARGET_COLOR = new Color('#beb6d3')
+const TARGET_EMISSIVE = new Color(0.15, 0.15, 0.15)
 
 type IconBubbleProps = {
   icon: string;
@@ -24,6 +24,7 @@ export function IconBubble({ icon, ...otherProps }: IconBubbleProps) {
     color: [BASE_COLOR.r, BASE_COLOR.g, BASE_COLOR.b],
     emissive: [BASE_EMISSIVE.r, BASE_EMISSIVE.g, BASE_EMISSIVE.b],
   }));
+  const mat = useIridescentMaterial('#a0c6db')
 
   const setHover = useCallback(
     (newState: boolean) => {
@@ -50,7 +51,7 @@ export function IconBubble({ icon, ...otherProps }: IconBubbleProps) {
 
   useFrame(({ clock }) => {
     innerRef.current.position.y =
-      Math.sin(clock.elapsedTime + (rand.current)) / 2;
+      Math.sin(clock.elapsedTime + (rand.current)) / 4;
   });
 
   return (
@@ -62,24 +63,12 @@ export function IconBubble({ icon, ...otherProps }: IconBubbleProps) {
         onPointerOver={() => setHover(true)}
         onPointerOut={() => setHover(false)}
         ref={innerRef}
+        material={mat}
         material-color={springs.color}
         material-emissive={springs.emissive}
+        material-opacity={0.2}
       >
         <sphereGeometry args={[ICON_CIRCLE_RADIUS, 64, 64]} />
-        <MeshTransmissionMaterial
-          distortionScale={0}
-          temporalDistortion={0}
-          resolution={1024}
-          thickness={0.1}
-          anisotropy={4}
-          chromaticAberration={0.3}
-          transparent
-          opacity={0.9}
-          roughness={0.6}
-          color={BASE_COLOR.clone()}
-          emissive={BLACK.clone()}
-          toneMapped={false}
-        />
         <mesh>
           <planeGeometry args={[ICON_CIRCLE_RADIUS, ICON_CIRCLE_RADIUS, 32]} />
           <meshPhysicalMaterial

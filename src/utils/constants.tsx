@@ -1,5 +1,5 @@
 import { Color } from "three";
-import { AboutPlatform, HomePlatform, WorkPlatform, ContactPlatform } from "../components/platforms";
+import { AboutPlatform, HomePlatform, WorkPlatform } from "../components/platforms";
 import type { ReactNode } from "react";
 
 export type IconProps = {
@@ -85,12 +85,8 @@ export const PLATFORMS: Platform[] = [
     content: <AboutPlatform />,
   },
   {
-    title: '/work',
+    title: '/projects',
     content: <WorkPlatform />,
-  },
-  {
-    title: '/contact',
-    content: <ContactPlatform />,
   },
 ]
 
