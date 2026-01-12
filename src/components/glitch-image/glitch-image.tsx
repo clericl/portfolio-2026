@@ -86,6 +86,7 @@ const GlitchImageBase: ForwardRefComponent<Omit<GlitchImageProps, 'url'>, Mesh> 
 
     useLayoutEffect(() => {
       if (ref.current.geometry.parameters) {
+        // @ts-expect-error shader material issue
         ref.current.material.scale.set(
           planeBounds[0] * ref.current.geometry.parameters.width,
           planeBounds[1] * ref.current.geometry.parameters.height
