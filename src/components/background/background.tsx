@@ -25,7 +25,7 @@ export function Background() {
         castShadow
         shadow-mapSize={2048}
       />
-      <Environment files={envUrl} environmentRotation={[0, -Math.PI / 3, 0]} />
+      <Environment files={envUrl} environmentRotation={[Math.PI / 3, -Math.PI / 2.7, 0]} />
       <group ref={starsRef}>
         <Stars radius={100} depth={10} count={1000} fade speed={1} />
       </group>
