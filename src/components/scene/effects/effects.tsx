@@ -15,7 +15,7 @@ export function Effects() {
 
   return (
     <EffectComposer>
-      <Bloom ref={bloomRef} luminanceThreshold={1} mipmapBlur intensity={0.3} />
+      <Bloom ref={bloomRef} luminanceThreshold={1} mipmapBlur intensity={0.2} />
     </EffectComposer>
   );
 }
