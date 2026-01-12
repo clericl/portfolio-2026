@@ -55,8 +55,7 @@ export function Frame({ name, url, ...otherProps }: FrameProps) {
         <meshStandardMaterial
           metalness={1.}
           roughness={0.}
-          color={0xa6a0ad}
-          // color={0xbac4c7}
+          color={0x4b5272}
         />
       </mesh>
       <GlitchImage color={BASE_GLITCH_COLOR} url={url} position-z={0.03} ref={glitchRef}>
