@@ -7,11 +7,11 @@ export function Loader() {
 
   return (
     <Html>
-      <div className="flex justify-center align-center absolute top-0 left-0 w-screen h-screen translate-x-[-50%] translate-y-[-50%] bg-black text-white text-center font-(family-name:--typeface-secondary)">
+      <div className="flex justify-center align-center absolute top-0 left-0 w-screen h-screen translate-x-[-50%] translate-y-[-50%] bg-black text-white text-center font-(family-name:--typeface-secondary) text-lg">
         <div className="flex flex-col justify-center">
-          <div className="font-(family-name:--typeface-primary) uppercase text-6xl">Eric Liang</div>
-          <div className="font-(family-name:--typeface-primary) uppercase text-3xl">Web Developer</div>
-          <div className="my-8 mx-0 text-sm">
+          <div className="font-(family-name:--typeface-primary) uppercase text-8xl">Eric Liang</div>
+          <div className="font-(family-name:--typeface-primary) uppercase text-4xl">Web Developer</div>
+          <div className="my-8 mx-0">
             <p>Loading...</p>
             <p>
               {progressData.progress >= 99
